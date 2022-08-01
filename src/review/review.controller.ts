@@ -19,11 +19,11 @@ export class ReviewController {
 	constructor(private readonly reviewService: ReviewService) {}
 	@Post('create')
 	async create(@Body() dto: CreateReviewDto): Promise<DocumentType<ReviewModel>> {
-		return this.reviewService.create(dto);
+		return await this.reviewService.create(dto);
 	}
 
 	@Delete(':id')
-	async delete(@Param(':id') id: string): Promise<void> {
+	async delete(@Param('id') id: string): Promise<void> {
 		const deletedDoc = await this.reviewService.delete(id);
 		if (!deletedDoc) {
 			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
@@ -32,6 +32,7 @@ export class ReviewController {
 
 	@Get('byProduct/:productId')
 	async getByProduct(@Param('productId') productId: string): Promise<DocumentType<ReviewModel>[]> {
-		return this.reviewService.getByProductId(productId);
+		const id = productId.slice(1);
+		return await this.reviewService.getByProductId(productId);
 	}
 }

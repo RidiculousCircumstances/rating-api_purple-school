@@ -4,7 +4,11 @@ import { Types } from 'mongoose';
 
 export class ReviewModel extends TimeStamps implements Base {
 	_id: Types.ObjectId;
-	id: string;
+
+	get id(): string {
+		console.log(this._id);
+		return this._id.toString();
+	}
 
 	@prop()
 	name: string;
@@ -19,5 +23,5 @@ export class ReviewModel extends TimeStamps implements Base {
 	rating: string;
 
 	@prop()
-	productId: Types.ObjectId;
+	productId: Types.ObjectId; //?
 }
