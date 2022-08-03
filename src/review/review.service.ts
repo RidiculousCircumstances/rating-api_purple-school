@@ -14,13 +14,11 @@ export class ReviewService {
 	constructor(@InjectModel(ReviewModel) private readonly reviewModel: ModelType<ReviewModel>) {}
 
 	async create(dto: CreateReviewDto): Promise<DocumentType<ReviewModel>> {
-		const res = this.reviewModel.create(dto);
-		return res;
+		return this.reviewModel.create(dto);
 	}
 
 	async delete(id: string): Promise<DocumentType<ReviewModel> | null> {
-		const res = this.reviewModel.findByIdAndDelete(id.slice(1)).exec();
-		return res;
+		return this.reviewModel.findByIdAndDelete(id.slice(1)).exec();
 	}
 
 	async getByProductId(productId: string): Promise<DocumentType<ReviewModel>[]> {

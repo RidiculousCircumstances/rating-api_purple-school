@@ -16,8 +16,7 @@ import { REVIEW_NOT_FOUND } from './review.constants';
 import { ReviewModel } from './review.model';
 import { ReviewService } from './review.service';
 import { DocumentType } from '@typegoose/typegoose/lib/types';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
-import { debug } from 'console';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 
 @Controller('review')
 export class ReviewController {
