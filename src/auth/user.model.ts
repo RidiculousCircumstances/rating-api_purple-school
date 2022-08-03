@@ -2,7 +2,7 @@ import { prop } from '@typegoose/typegoose';
 import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { Types } from 'mongoose';
 
-export class AuthModel extends TimeStamps implements Base {
+export class UserModel extends TimeStamps implements Base {
 	_id: Types.ObjectId;
 	id: string;
 
