@@ -17,7 +17,7 @@ export class ReviewModel extends TimeStamps implements Base {
 	title: string;
 
 	@prop()
-	descriptopn: string;
+	description: string;
 
 	@prop()
 	rating: string;

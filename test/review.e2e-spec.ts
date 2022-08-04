@@ -15,7 +15,7 @@ const testDto: CreateReviewDto = {
 	productId,
 };
 const registerDto: UserDto = {
-	login: 'b3a@ya.ru',
+	login: 'b9a@ya.ru',
 	password: 'aaaaaaaaa',
 };
 
@@ -54,7 +54,6 @@ describe('Review Controller (e2e)', () => {
 			.post('/review/create')
 			.send({ ...testDto, rating: 0 });
 		await req.expect(400);
-		console.log(resp.body);
 	});
 
 	it('/byProduct/:productId (GET) - success', async () => {

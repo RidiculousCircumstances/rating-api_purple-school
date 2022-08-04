@@ -24,7 +24,7 @@ export class ProductModel extends TimeStamps implements Base {
 	price: number;
 
 	@prop()
-	oldPrice: number;
+	oldPrice?: number;
 
 	@prop()
 	credit: number;
@@ -33,7 +33,7 @@ export class ProductModel extends TimeStamps implements Base {
 	calculatedRating: number;
 
 	@prop()
-	descriptopn: string;
+	description: string;
 
 	@prop()
 	advantages: string;
