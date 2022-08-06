@@ -41,6 +41,9 @@ export class PageModel extends TimeStamps implements Base {
 	secondLevelCategory: string;
 
 	@prop()
+	alias: string;
+
+	@prop()
 	title: string;
 
 	@prop({ unique: true })

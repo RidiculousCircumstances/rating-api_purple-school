@@ -38,13 +38,23 @@ export class ProductService {
 						from: 'Review',
 						localField: '_id',
 						foreignField: 'productId',
-						as: 'productReview',
+						as: 'reviews',
 					},
 				},
 				{
 					$addFields: {
-						reviewCount: { $size: '$ProductReview' },
-						ratingAvg: { $avg: '$ProductReview.rating' },
+						reviewCount: { $size: '$reviews' },
+						ratingAvg: { $avg: '$reviews.rating' },
+						reviews: {
+							$function: {
+								body: `function (reviews) {
+								reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+								return reviews;
+							}`,
+								args: ['$reviews'],
+								lang: 'js',
+							},
+						},
 					},
 				},
 			])

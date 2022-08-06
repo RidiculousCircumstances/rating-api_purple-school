@@ -11,6 +11,7 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
+import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
 import { ReviewModel } from 'src/review/review.model';
 import { CreateProductDto } from './dto/create-product.dto';
 import { FindProductDto } from './dto/find-product.dto';
@@ -24,13 +25,13 @@ export class ProductController {
 
 	@UsePipes(new ValidationPipe())
 	@Post('create')
-	async create(@Body() dto: CreateProductDto): Promise<void> {
-		this.productService.create(dto);
+	async create(@Body() dto: CreateProductDto): Promise<ProductModel> {
+		return this.productService.create(dto);
 	}
 
 	@Get(':id')
-	async get(@Param('id') id: string): Promise<ProductModel> {
-		const result = await this.productService.getById(id.slice(1));
+	async get(@Param('id', IdValidationPipe) id: string): Promise<ProductModel> {
+		const result = await this.productService.getById(id);
 		if (!result) {
 			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR);
 		}
@@ -38,8 +39,8 @@ export class ProductController {
 	}
 
 	@Delete(':id')
-	async delete(@Param('id') id: string): Promise<void> {
-		const result = await this.productService.deleteById(id.slice(1));
+	async delete(@Param('id', IdValidationPipe) id: string): Promise<void> {
+		const result = await this.productService.deleteById(id);
 		if (!result) {
 			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR);
 		}
@@ -47,8 +48,11 @@ export class ProductController {
 
 	@UsePipes(new ValidationPipe())
 	@Patch(':id')
-	async patch(@Param('id') id: string, @Body() dto: ProductModel): Promise<ProductModel> {
-		const result = await this.productService.updateById(id.slice(1), dto);
+	async patch(
+		@Param('id', IdValidationPipe) id: string,
+		@Body() dto: ProductModel,
+	): Promise<ProductModel> {
+		const result = await this.productService.updateById(id, dto);
 		if (!result) {
 			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR);
 		}

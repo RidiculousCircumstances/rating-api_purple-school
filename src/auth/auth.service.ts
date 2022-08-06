@@ -52,7 +52,7 @@ export class AuthService {
 	}
 
 	async deleteUser(id: string, email: string): Promise<DocumentType<UserModel> | null> {
-		const existedUser = await this.userModel.findById(id.slice(1));
+		const existedUser = await this.userModel.findById(id);
 		if (!existedUser) {
 			throw new NotFoundException(NON_EXISTEN_USER_ERROR);
 		}

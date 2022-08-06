@@ -17,6 +17,7 @@ import { ReviewModel } from './review.model';
 import { ReviewService } from './review.service';
 import { DocumentType } from '@typegoose/typegoose/lib/types';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
 
 @Controller('review')
 export class ReviewController {
@@ -29,7 +30,7 @@ export class ReviewController {
 
 	@UseGuards(JwtAuthGuard)
 	@Delete(':id')
-	async delete(@Param('id') id: string): Promise<void> {
+	async delete(@Param('id', IdValidationPipe) id: string): Promise<void> {
 		const deletedDoc = await this.reviewService.delete(id);
 		if (!deletedDoc) {
 			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
@@ -37,7 +38,10 @@ export class ReviewController {
 	}
 
 	@Get('byProduct/:productId')
-	async getByProduct(@Param('productId') productId: string): Promise<DocumentType<ReviewModel>[]> {
+	async getByProduct(
+		@Param('productId', IdValidationPipe) productId: string,
+	): Promise<DocumentType<ReviewModel>[]> {
+		const a = await this.reviewService.getByProductId(productId);
 		return await this.reviewService.getByProductId(productId);
 	}
 }
