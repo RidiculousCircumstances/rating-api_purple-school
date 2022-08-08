@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: action/checkout@main
       - name: Publish to registry
-      - uses: elgohr/Publish-Docker-Github-Action@v4
-      - with:
+        uses: elgohr/Publish-Docker-Github-Action@main
+        with:
         registry: docker.pkg.github.com
         name: docker.pkg.github.com/RidiculousCircumstances/rating-api_purple-school/rating-api_container
         username: ${{ secrets.DOCKER_USERNAME }}
