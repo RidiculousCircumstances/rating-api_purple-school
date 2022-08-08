@@ -8,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@vmain
+      - uses: actions/checkout@main
       - name: Publish to registy
-        uses: elgohr/Publish-Docker-Github-Action@vmain
+        uses: elgohr/Publish-Docker-Github-Action@main
         with:
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/RidiculousCircumstances/rating-api_purple-school/rating-api_container
