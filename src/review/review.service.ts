@@ -18,6 +18,7 @@ export class ReviewService {
 	}
 
 	async getByProductId(productId: string): Promise<DocumentType<ReviewModel>[]> {
+		console.log('You have connected via local network!');
 		return this.reviewModel.find({ productId: new Types.ObjectId(productId) }).exec();
 	}
 
