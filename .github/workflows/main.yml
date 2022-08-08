@@ -12,7 +12,7 @@ jobs:
       - name: Publish to registy
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           name: ghcr.io/RidiculousCircumstances/rating-api_purple-school/rating-api_container
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
