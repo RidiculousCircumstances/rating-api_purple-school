@@ -4,6 +4,7 @@ import { InjectModel } from 'nestjs-typegoose';
 import { CreatePageDto } from './dto/create-page.dto';
 import { FindPageDto } from './dto/find-page.dto';
 import { PageModel } from './page.model';
+import { addDays } from 'date-fns';
 
 @Injectable()
 export class PageService {
@@ -32,6 +33,12 @@ export class PageService {
 	async getByCategory(firstCategory: FindPageDto): Promise<PageModel[] | null> {
 		return this.pageModel
 			.find({ firstCategory }, { alias: 1, secondLevelCategory: 1, title: 1 })
+			.exec();
+	}
+
+	async findForHHUpdate(date: Date): Promise<PageModel[] | null> {
+		return this.pageModel
+			.find({ firstLevelCategory: 0, 'hh.updatedAt': { $lt: addDays(date, -1) } })
 			.exec();
 	}
 }

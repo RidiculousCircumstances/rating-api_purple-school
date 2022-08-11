@@ -18,5 +18,6 @@ import { PageService } from './page.service';
 			},
 		]),
 	],
+	exports: [PageService],
 })
 export class PageModule {}

@@ -18,14 +18,29 @@ import { ReviewService } from './review.service';
 import { DocumentType } from '@typegoose/typegoose/lib/types';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { TelegramService } from 'src/telegram/telegram.service';
 
 @Controller('review')
 export class ReviewController {
-	constructor(private readonly reviewService: ReviewService) {}
+	constructor(
+		private readonly reviewService: ReviewService,
+		private telegramService: TelegramService,
+	) {}
 	@UsePipes(new ValidationPipe())
 	@Post('create')
 	async create(@Body() dto: CreateReviewDto): Promise<DocumentType<ReviewModel>> {
 		return await this.reviewService.create(dto);
+	}
+
+	@Post('notify')
+	async notufy(@Body() dto: CreateReviewDto): Promise<void> {
+		const message =
+			`Имя ${dto.name}\n` +
+			`Заголовок ${dto.title}\n` +
+			`Описание ${dto.description}\n` +
+			`Рейтинг ${dto.rating}\n` +
+			`ID Продукта ${dto.productId}\n`;
+		return this.telegramService.sendMessage(message);
 	}
 
 	@UseGuards(JwtAuthGuard)

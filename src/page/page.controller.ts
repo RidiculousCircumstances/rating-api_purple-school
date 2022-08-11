@@ -11,7 +11,6 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
 import { CreatePageDto } from './dto/create-page.dto';
 import { FindPageDto } from './dto/find-page.dto';
