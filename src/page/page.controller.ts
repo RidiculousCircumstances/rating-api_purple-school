@@ -103,7 +103,6 @@ export class PageController {
 	@Cron(CronExpression.EVERY_DAY_AT_1AM, { name: 'test' })
 	async updateVacancies(): Promise<void> {
 		const job = this.scheduleRgistry.getCronJob('test');
-
 		const data = await this.pageService.findForHHUpdate(new Date());
 		if (!data) {
 			throw new NotFoundException(NON_EXISTING_DATA_ERROR);
