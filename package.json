@@ -44,7 +44,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "sharp": "^0.30.7",
-    "telegraf": "^4.8.6"
+    "telegraf": "^4.8.6",
+    "app-root-path": "^3.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
@@ -63,7 +64,6 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
-    "app-root-path": "^3.0.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
