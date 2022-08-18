@@ -43,13 +43,13 @@ export class PageModel extends TimeStamps implements Base {
 	@prop()
 	secondLevelCategory: string;
 
-	@prop()
+	@prop({ unique: true })
 	alias: string;
 
 	@prop()
 	title: string;
 
-	@prop({ unique: true })
+	@prop()
 	category: string;
 
 	@prop({ type: () => HhData })
