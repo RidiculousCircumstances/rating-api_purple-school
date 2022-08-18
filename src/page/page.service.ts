@@ -18,8 +18,8 @@ export class PageService {
 		return this.pageModel.findById(id).exec();
 	}
 
-	async findByAlias(alias: string): Promise<PageModel | null> {
-		return await this.pageModel.findOne({ alias }).exec();
+	async findByAlias(alias: string): Promise<PageModel[] | null> {
+		return await this.pageModel.find({ alias }).exec();
 	}
 
 	async deleteById(id: string): Promise<PageModel | null> {

@@ -48,7 +48,7 @@ export class PageController {
 	}
 
 	@Get('/byAlias/:alias')
-	async getByAlias(@Param('alias') alias: string): Promise<PageModel> {
+	async getByAlias(@Param('alias') alias: string): Promise<PageModel[]> {
 		const result = await this.pageService.findByAlias(alias);
 		if (!result) {
 			throw new NotFoundException(NON_EXISTING_PAGE_ERROR);
