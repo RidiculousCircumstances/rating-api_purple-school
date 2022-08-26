@@ -29,6 +29,13 @@ export class ReviewController {
 	@UsePipes(new ValidationPipe())
 	@Post('create')
 	async create(@Body() dto: CreateReviewDto): Promise<DocumentType<ReviewModel>> {
+		const message =
+			`Имя ${dto.name}\n` +
+			`Заголовок ${dto.title}\n` +
+			`Описание ${dto.description}\n` +
+			`Рейтинг ${dto.rating}\n` +
+			`ID Продукта ${dto.productId}\n`;
+		this.telegramService.sendMessage(message);
 		return await this.reviewService.create(dto);
 	}
 
