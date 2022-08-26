@@ -4,7 +4,6 @@ import {
 	Delete,
 	Get,
 	HttpCode,
-	Logger,
 	NotFoundException,
 	Param,
 	Patch,
@@ -47,7 +46,7 @@ export class PageController {
 		return result;
 	}
 
-	@Get('/byAlias/:alias')
+	@Get('byAlias/:alias')
 	async getByAlias(@Param('alias') alias: string): Promise<PageModel> {
 		const result = await this.pageService.findByAlias(alias);
 		if (!result) {
@@ -109,7 +108,21 @@ export class PageController {
 		}
 		for (const page of data) {
 			const hhData = await this.hhService.getData(page.category);
-			Logger.log(hhData);
+			page.hh = hhData;
+			await this.sleep();
+			await this.pageService.updateById(page._id, page);
+		}
+	}
+
+	@Post('hh')
+	async manualUpdateVacancies(): Promise<void> {
+		const data = await this.pageService.findForHHUpdate(new Date());
+		if (!data) {
+			throw new NotFoundException(NON_EXISTING_DATA_ERROR);
+		}
+
+		for (const page of data) {
+			const hhData = await this.hhService.getData(page.category);
 			page.hh = hhData;
 			await this.sleep();
 			await this.pageService.updateById(page._id, page);
