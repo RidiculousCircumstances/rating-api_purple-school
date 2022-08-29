@@ -7,8 +7,7 @@ async function bootstrap(): Promise<void> {
 	app.setGlobalPrefix('api');
 	const configService: ConfigService = app.get(ConfigService);
 	const port = +configService.get('PORT');
-	app.enableCors({ origin: configService.get('PRODUCTION_ORIGIN') });
-	//app.enableCors({ origin: configService.get('DEV_ORIGIN') });
+	app.enableCors({ origin: configService.get('ORIGIN') });
 	await app.listen(port);
 }
 
