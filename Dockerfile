@@ -1,5 +1,5 @@
 FROM node:16-alpine
-WORKDIR /opt/api
+WORKDIR /container
 ADD package.json package.json
 RUN npm install --force
 ADD . .
