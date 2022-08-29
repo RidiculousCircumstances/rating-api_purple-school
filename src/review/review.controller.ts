@@ -17,8 +17,8 @@ import { ReviewModel } from './review.model';
 import { ReviewService } from './review.service';
 import { DocumentType } from '@typegoose/typegoose/lib/types';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
-import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
-import { TelegramService } from 'src/telegram/telegram.service';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
+import { TelegramService } from '../telegram/telegram.service';
 
 @Controller('review')
 export class ReviewController {

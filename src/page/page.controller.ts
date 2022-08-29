@@ -13,8 +13,8 @@ import {
 	ValidationPipe,
 } from '@nestjs/common';
 import { Cron, CronExpression, SchedulerRegistry } from '@nestjs/schedule';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
-import { HhService } from 'src/hh/hh.service';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { HhService } from '../hh/hh.service';
 import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
 import { CreatePageDto } from './dto/create-page.dto';
 import { FindPageDto } from './dto/find-page.dto';

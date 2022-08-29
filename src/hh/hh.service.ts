@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { lastValueFrom } from 'rxjs';
-import { HhData } from 'src/page/page.model';
+import { HhData } from '../page/page.model';
 import { HH_API, SALARY_CLUSTER_ID, SALARY_CLUSTER_NOT_FOUND } from './hh.constants';
 import { HhResponse } from './hh.models';
 
