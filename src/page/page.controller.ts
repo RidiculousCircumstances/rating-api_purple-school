@@ -15,7 +15,7 @@ import {
 import { Cron, CronExpression, SchedulerRegistry } from '@nestjs/schedule';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { HhService } from '../hh/hh.service';
-import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { CreatePageDto } from './dto/create-page.dto';
 import { FindPageDto } from './dto/find-page.dto';
 import { NON_EXISTING_DATA_ERROR, NON_EXISTING_PAGE_ERROR } from './page.constants';
