@@ -117,6 +117,7 @@ export class PageController {
 	@Post('hh')
 	async manualUpdateVacancies(): Promise<void> {
 		const data = await this.pageService.findForHHUpdate(new Date());
+
 		if (!data) {
 			throw new NotFoundException(NON_EXISTING_DATA_ERROR);
 		}
