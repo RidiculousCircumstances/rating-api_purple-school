@@ -16,4 +16,4 @@ jobs:
           name: ghcr.io/RidiculousCircumstances/rating-api_purple-school/rating-api_container
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          tags: "develop"
+          tags: "develop" 
