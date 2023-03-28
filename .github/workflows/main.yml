@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Publish to registy
-        uses: elgohr/Publish-Docker-Github-Action@main
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           registry: ghcr.io
           name: ghcr.io/RidiculousCircumstances/rating-api_purple-school/rating-api_container
